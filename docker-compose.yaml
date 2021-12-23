@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+  # app:
+  #   depends_on: 
+  #   - mongodb
+  #   restart: always
+  #   build: ./backend/
+  #   ports:
+  #     - "3000:3000"
