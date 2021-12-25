@@ -7,7 +7,7 @@
     "dev": "nodemon --exec babel-node ./src",
     "build": "babel ./src -d dist",
     "start": "npm run build && nodemon dist/index.js",
-    "test": "jest src --watch"
+    "test": "jest src --watch --runInBand"
   },
   "keywords": [],
   "author": "",
@@ -31,6 +31,7 @@
     "@shelf/jest-mongodb": "^2.1.1",
     "faker": "^5.5.3",
     "jest": "^27.4.5",
-    "mongodb-memory-server": "^8.1.0"
+    "mongodb-memory-server": "^8.1.0",
+    "supertest": "^6.1.6"
   }
 }

@@ -3,7 +3,7 @@ import makeNewsDb from '../data-access/news-db'
 import makeFakeNews from '../../../fixtures/news'
 import makeDb, { clearDb } from '../../../fixtures/newsTestDb'
 
-describe('edit comment', () => {
+describe('edit news', () => {
   let newsDb
   beforeAll(() => {
     newsDb = makeNewsDb({ makeDb })

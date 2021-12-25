@@ -10,7 +10,6 @@ export default function makeEditNews({ newsDb }) {
     if (!existing) {
       throw new Error('News not found.')
     }
-
     const news = makeNews({ ...existing, ...changes })
 
     if (news.isArchived()) {

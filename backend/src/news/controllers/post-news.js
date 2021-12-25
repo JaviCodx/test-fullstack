@@ -15,7 +15,6 @@ export default function makePostNews({ addNews }) {
       }
     } catch (e) {
       // TODO: Error logging
-      console.log(e)
 
       return {
         headers: {

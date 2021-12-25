@@ -1,4 +1,3 @@
-import { ObjectId } from 'mongodb'
 export default function makeNewsDb({ makeDb }) {
   return Object.freeze({
     findAll,
@@ -7,11 +6,15 @@ export default function makeNewsDb({ makeDb }) {
     remove,
     update
   })
-  async function findAll({ archivedOnly = true } = {}) {
+  async function findAll({ archivedOnly = false } = {}) {
     const db = await makeDb()
-    const query = {}
-    // const query = archivedOnly ? { archived: true } : {}
-    const results = await db.collection('news').find(query).toArray()
+    const query = archivedOnly ? { archived: true } : {}
+    const sortCondition = archivedOnly ? { archived: -1 } : { createdOn: -1 }
+    const results = await db
+      .collection('news')
+      .find(query)
+      .sort(sortCondition)
+      .toArray()
     return results.map(({ _id: id, ...found }) => ({
       id,
       ...found
@@ -23,7 +26,7 @@ export default function makeNewsDb({ makeDb }) {
 
     const result = await db
       .collection('news')
-      .find({ _id: new ObjectId(_id) })
+      .find({ _id: db.makeIdFromString(_id) })
       .toArray()
 
     if (result.length === 0) {
@@ -49,7 +52,7 @@ export default function makeNewsDb({ makeDb }) {
     const db = await makeDb()
     const result = await db
       .collection('news')
-      .updateOne({ _id: new ObjectId(_id) }, { $set: { ...newsInfo } })
+      .updateOne({ _id: db.makeIdFromString(_id) }, { $set: { ...newsInfo } })
 
     return result.modifiedCount > 0 ? { id: _id, ...newsInfo } : null
   }

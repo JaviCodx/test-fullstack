@@ -12,7 +12,7 @@ export default function makeDeleteNews({ removeNews }) {
       }
     } catch (e) {
       // TODO: Error logging
-      console.log(e)
+
       return {
         headers,
         statusCode: 400,

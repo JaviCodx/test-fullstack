@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb'
+import { MongoClient, ObjectId } from 'mongodb'
 
 let connection, db
 
@@ -9,9 +9,15 @@ export default async function makeDb() {
       useNewUrlParser: true
     }))
   db = db || (await connection.db('test'))
+  db.makeIdFromString = makeIdFromString
 
   return db
 }
+
+function makeIdFromString(string) {
+  return new ObjectId(string)
+}
+
 export async function closeDb() {
   await connection.close()
   await db.close()

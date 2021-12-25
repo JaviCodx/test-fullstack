@@ -5,7 +5,7 @@ export default function makeGetNews({ listNews }) {
     }
     try {
       const newsList = await listNews({
-        postId: httpRequest.query.postId
+        archivedOnly: httpRequest.query.archivedOnly
       })
       return {
         headers,

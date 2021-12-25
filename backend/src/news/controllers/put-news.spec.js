@@ -1,8 +1,8 @@
 import makePatchNews from './put-news'
 import makeFakeNews from '../../../fixtures/news'
 
-describe('patch comment controller', () => {
-  it('successfully patches a comment', async () => {
+describe('put news controller', () => {
+  it('successfully modifies a news', async () => {
     const fakeNews = makeFakeNews()
     const patchNews = makePatchNews({ editNews: (c) => c })
     const request = {
