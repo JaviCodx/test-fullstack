@@ -1,7 +1,7 @@
 import makeNewsDb from './news-db'
 import { MongoClient, ObjectId } from 'mongodb'
 
-const url = 'mongodb://localhost:27017'
+const url = process.env.MONGO_URI || 'mongodb://localhost:27017'
 const dbName = process.env.NODE_ENV === 'test' ? 'newsTest' : 'news'
 const client = new MongoClient(url, { useNewUrlParser: true })
 

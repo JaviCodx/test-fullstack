@@ -4,10 +4,31 @@ services:
     image: mongo
     ports:
       - "27017:27017"
-  # app:
-  #   depends_on: 
-  #   - mongodb
-  #   restart: always
-  #   build: ./backend/
-  #   ports:
-  #     - "3000:3000"
+    logging:
+      driver: "none"
+    networks:
+      - news-app
+  news-api:
+    depends_on: 
+     - mongodb
+    environment:
+     - MONGO_URI=mongodb://mongodb:27017
+    restart: always
+    build: ./backend/
+    ports:
+      - "3010:3010"
+    networks:
+      - news-app
+  client:
+    depends_on: 
+     - mongodb
+     - news-api
+    restart: always
+    build: ./client/
+    ports:
+      - "3000:3000"
+    networks:
+      - news-app
+networks:
+  news-app:
+    driver: bridge

@@ -1,11 +1,11 @@
 import { MongoClient, ObjectId } from 'mongodb'
 
 let connection, db
-
+const url = process.env.MONGO_URI || 'mongodb://localhost:27017'
 export default async function makeDb() {
   connection =
     connection ||
-    (await MongoClient.connect('mongodb://localhost:27017', {
+    (await MongoClient.connect(url, {
       useNewUrlParser: true
     }))
   db = db || (await connection.db('test'))

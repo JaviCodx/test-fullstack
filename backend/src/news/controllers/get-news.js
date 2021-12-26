@@ -5,7 +5,8 @@ export default function makeGetNews({ listNews }) {
     }
     try {
       const newsList = await listNews({
-        archivedOnly: httpRequest.query.archivedOnly
+        archivedOnly: httpRequest.query.archivedOnly,
+        nonArchivedOnly: httpRequest.query.nonArchivedOnly
       })
       return {
         headers,
@@ -13,8 +14,6 @@ export default function makeGetNews({ listNews }) {
         body: newsList
       }
     } catch (e) {
-      // TODO: Error logging
-      console.log(e)
       return {
         headers,
         statusCode: 400,

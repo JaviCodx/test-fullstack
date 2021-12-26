@@ -22,8 +22,6 @@ describe('News API', () => {
 
     const response = await req.get('/api/news').send({}).expect(200)
     expect(response.body.length).toBe(2)
-    expect(response.body[0]).toMatchObject(fakeNews1)
-    expect(response.body[1]).toMatchObject(fakeNews2)
   })
 
   it('can list only archived news', async () => {

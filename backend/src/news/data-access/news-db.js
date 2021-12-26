@@ -6,10 +6,15 @@ export default function makeNewsDb({ makeDb }) {
     remove,
     update
   })
-  async function findAll({ archivedOnly = false } = {}) {
+  async function findAll({
+    archivedOnly = false,
+    nonArchivedOnly = false
+  } = {}) {
     const db = await makeDb()
-    const query = archivedOnly ? { archived: true } : {}
-    const sortCondition = archivedOnly ? { archived: -1 } : { createdOn: -1 }
+    let query = archivedOnly ? { archived: true } : {}
+    query = nonArchivedOnly ? { archived: null } : query
+
+    const sortCondition = archivedOnly ? { archivedOn: -1 } : { createdOn: -1 }
     const results = await db
       .collection('news')
       .find(query)
