@@ -11,8 +11,6 @@ export default function makeDeleteNews({ removeNews }) {
         body: { deleted }
       }
     } catch (e) {
-      // TODO: Error logging
-
       return {
         headers,
         statusCode: 400,

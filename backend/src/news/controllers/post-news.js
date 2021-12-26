@@ -14,8 +14,6 @@ export default function makePostNews({ addNews }) {
         body: { posted }
       }
     } catch (e) {
-      // TODO: Error logging
-
       return {
         headers: {
           'Content-Type': 'application/json'
