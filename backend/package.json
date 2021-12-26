@@ -20,19 +20,14 @@
     "mongoose": "^6.1.3",
     "nodemon": "^2.0.15"
   },
-  "jest": {
-    "globalSetup": "./jest-setup.js",
-    "globalTeardown": "./jest-teardown.js"
-  },
+  "jest": {},
   "devDependencies": {
     "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.5",
     "@babel/node": "^7.16.5",
     "@babel/preset-env": "^7.16.5",
-    "@shelf/jest-mongodb": "^2.1.1",
     "faker": "^5.5.3",
     "jest": "^27.4.5",
-    "mongodb-memory-server": "^8.1.0",
     "supertest": "^6.1.6"
   }
 }

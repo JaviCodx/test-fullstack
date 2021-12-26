@@ -14,14 +14,12 @@ ifndef DOCKER_COMPOSE
 	@exit 1
 endif
 
-DB_USER=root
-DB_PASS=pass
 
 app-build: deps
 	docker-compose build
 
 app-start: deps
-	docker-compose up
+	docker-compose build && docker-compose up
 
 app-stop: deps
 	docker-compose down
